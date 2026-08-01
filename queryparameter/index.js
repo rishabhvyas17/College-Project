@@ -19,7 +19,14 @@ let users = [
 app.get("/users",(req,res)=>{
     console.log(req.query);
     let name = req.query.name
-    res.send("data mil gya" +" name: "+name);
+    // res.send("data mil gya" +" name: "+name);
+    for(let i=0; i<users.length; i++){
+        console.log(users[i].name == name);
+        if(users[i].name == name){
+            console.log("aaaaaaaaaaaa")
+            return res.json(users[i]);
+        }
+    }
 });
 
 app.listen(3030,()=>{
