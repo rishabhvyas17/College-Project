@@ -16,18 +16,22 @@ let users = [
     },
 ];
 
+let temp = []
+
 app.get("/users",(req,res)=>{
     console.log(req.query);
-    let name = req.query.name
+    let age = req.query.age
     // res.send("data mil gya" +" name: "+name);
     for(let i=0; i<users.length; i++){
-        console.log(users[i].name == name);
-        if(users[i].name == name){
-            console.log("aaaaaaaaaaaa")
-            return res.json(users[i]);
+        if(users[i].age>=age){
+            temp.push(users[i]);
+            console.log(temp);
         }
     }
+    res.json(temp);
 });
+
+console.log(temp);
 
 app.listen(3030,()=>{
     console.log("Server started!!");
