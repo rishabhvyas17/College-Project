@@ -32,6 +32,13 @@ app.get("/delete/:id", (req,res)=>{
     res.send(users);
 })
 
+//deleting using filter
+
+app.get("/deletefilter/:id", (req,res)=>{
+    let id = req.params.id;
+    let newArr = users.filter(item=> item.id != id);
+    res.json(newArr);
+})
 
 //update user details
 
